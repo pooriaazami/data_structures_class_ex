@@ -22,15 +22,13 @@ public class DynamicArray<E> implements List<E> {
         buffer = (E[]) new Object[INITIAL_SIZE];
     }
 
-    private void shrink() {
-    }
-
-    private void grow() {
+    private void reInitializeBuffer() {
+        E[] newBuffer = (E[]) new Object[(int) (capacity)];
+        System.arraycopy(buffer, 0, newBuffer, 0, capacity);
     }
 
     @Override
     public void add() {
-
     }
 
     @Override
