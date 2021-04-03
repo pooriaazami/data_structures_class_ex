@@ -8,7 +8,7 @@ public interface List<E> {
 
     E remove(int index);
 
-    E delete(E data);
+    int delete(E data);
 
     int size();
 

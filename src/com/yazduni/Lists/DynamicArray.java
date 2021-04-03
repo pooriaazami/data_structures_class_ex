@@ -69,8 +69,14 @@ public class DynamicArray<E> implements List<E> {
     }
 
     @Override
-    public E delete(E data) {
-        return null;
+    public int delete(E data) {
+        int index = find(data);
+
+        if (index == -1)
+            return -1;
+
+        remove(index);
+        return index;
     }
 
     @Override
