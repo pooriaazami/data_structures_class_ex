@@ -8,7 +8,15 @@ public class DynamicArray<E> implements List<E> {
     private final double GROW_RATE = 1.5;
     private final double SHRINK_RATE = 1 / GROW_RATE;
 
+    private int capacity = INITIAL_SIZE;
+    private int last_index = 0;
+
     private E[] buffer;
+
+    private void checkIndex(int index) {
+        if (index < 0 || index > last_index)
+            throw new IllegalArgumentException("Invalid value for index");
+    }
 
     public DynamicArray() {
         buffer = (E[]) new Object[INITIAL_SIZE];
