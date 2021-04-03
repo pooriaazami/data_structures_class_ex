@@ -99,6 +99,10 @@ public class DynamicArray<E> implements List<E> {
 
     @Override
     public int find(E data) {
-        return 0;
+        for (int i = 0; i <= last_index; i++)
+            if (buffer[i].equals(data))
+                return i;
+
+        return -1;
     }
 }

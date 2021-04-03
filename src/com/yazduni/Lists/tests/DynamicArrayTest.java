@@ -167,4 +167,31 @@ class DynamicArrayTest {
     @Test
     void delete() {
     }
+
+    @Test
+    void find() {
+        assertEquals(-1, array.find("Pascal"));
+
+        array.add("JAVA");
+        array.add("C++");
+        array.add("Python");
+        array.add("Rust");
+        array.add("Julia");
+        array.add("Golang");
+        array.add("PHP");
+        array.add("C#");
+        array.add("Assembly");
+
+        assertEquals(0, array.find("JAVA"));
+        assertEquals(1, array.find("C++"));
+        assertEquals(2, array.find("Python"));
+        assertEquals(3, array.find("Rust"));
+        assertEquals(4, array.find("Julia"));
+        assertEquals(5, array.find("Golang"));
+        assertEquals(6, array.find("PHP"));
+        assertEquals(7, array.find("C#"));
+        assertEquals(8, array.find("Assembly"));
+
+        assertEquals(-1, array.find("Pascal"));
+    }
 }
