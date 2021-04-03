@@ -1,4 +1,4 @@
-package com.yazduni.Lists.tests;
+package com.yazduni.Lists;
 
 import com.yazduni.Lists.List;
 
