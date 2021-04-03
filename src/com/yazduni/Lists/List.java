@@ -4,6 +4,8 @@ public interface List<E> {
 
     void add(E data);
 
+    void insert(E data, int index);
+
     E remove(int index);
 
     E delete(E data);

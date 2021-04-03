@@ -32,6 +32,11 @@ public class DynamicArray<E> implements List<E> {
     }
 
     @Override
+    public void insert(E data, int index) {
+
+    }
+
+    @Override
     public E remove(int index) {
         return null;
     }
