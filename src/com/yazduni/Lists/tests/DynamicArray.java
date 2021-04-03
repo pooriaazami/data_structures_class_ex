@@ -48,21 +48,25 @@ public class DynamicArray<E> implements List<E> {
 
     @Override
     public int size() {
-        return 0;
+        return last_index + 1;
     }
 
     @Override
     public int capacity() {
-        return 0;
+        return capacity;
     }
 
     @Override
     public E get(int index) {
-        return null;
+        checkIndex(index);
+        return buffer[index];
     }
 
     @Override
-    public void set(E data) {
+    public void set(int index, E data) {
+        checkIndex(index);
+
+        buffer[index] = data;
 
     }
 }

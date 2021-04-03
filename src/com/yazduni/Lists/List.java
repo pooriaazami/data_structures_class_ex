@@ -16,6 +16,6 @@ public interface List<E> {
 
     E get(int index);
 
-    void set(E data);
+    void set(int index, E data);
 
 }
