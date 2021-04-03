@@ -9,7 +9,7 @@ public class DynamicArray<E> implements List<E> {
     private final double SHRINK_RATE = 1 / GROW_RATE;
 
     private int capacity = INITIAL_SIZE;
-    private int last_index = 0;
+    private int last_index = -1;
 
     private E[] buffer;
 
@@ -34,7 +34,7 @@ public class DynamicArray<E> implements List<E> {
             reInitializeBuffer();
         }
 
-        buffer[last_index++] = data;
+        buffer[++last_index] = data;
     }
 
     @Override
