@@ -29,6 +29,12 @@ public class DynamicArray<E> implements List<E> {
 
     @Override
     public void add(E data) {
+        if (last_index + 1 == capacity) {
+            capacity *= GROW_RATE;
+            reInitializeBuffer();
+        }
+
+        buffer[last_index++] = data;
     }
 
     @Override
