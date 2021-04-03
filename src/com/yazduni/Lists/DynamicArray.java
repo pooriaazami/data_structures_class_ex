@@ -59,7 +59,7 @@ public class DynamicArray<E> implements List<E> {
         E element = buffer[index];
         System.arraycopy(buffer, index + 1, buffer, index, last_index - index + 1);
 
-        if (last_index + 1 == capacity * SHRINK_RATE * SHRINK_RATE) {
+        if (last_index + 1 == capacity * SHRINK_RATE * SHRINK_RATE && capacity * SHRINK_RATE >= 4) {
             capacity *= SHRINK_RATE;
             reInitializeBuffer();
         }
