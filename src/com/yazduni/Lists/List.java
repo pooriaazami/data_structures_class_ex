@@ -2,7 +2,7 @@ package com.yazduni.Lists;
 
 public interface List<E> {
 
-    void add();
+    void add(E data);
 
     E remove(int index);
 

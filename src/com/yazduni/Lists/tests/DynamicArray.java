@@ -28,7 +28,7 @@ public class DynamicArray<E> implements List<E> {
     }
 
     @Override
-    public void add() {
+    public void add(E data) {
     }
 
     @Override
