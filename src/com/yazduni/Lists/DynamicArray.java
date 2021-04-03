@@ -5,7 +5,7 @@ import com.yazduni.Lists.List;
 public class DynamicArray<E> implements List<E> {
 
     private final int INITIAL_SIZE = 8;
-    private final double GROW_RATE = 1.5;
+    private final double GROW_RATE = 2;
     private final double SHRINK_RATE = 1 / GROW_RATE;
 
     private int capacity = INITIAL_SIZE;
@@ -24,7 +24,8 @@ public class DynamicArray<E> implements List<E> {
 
     private void reInitializeBuffer() {
         E[] newBuffer = (E[]) new Object[(int) (capacity)];
-        System.arraycopy(buffer, 0, newBuffer, 0, capacity);
+        System.arraycopy(buffer, 0, newBuffer, 0, size());
+        buffer = newBuffer;
     }
 
     @Override
