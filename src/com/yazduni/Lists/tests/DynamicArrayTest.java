@@ -122,6 +122,46 @@ class DynamicArrayTest {
 
     @Test
     void remove() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            array.remove(0);
+        });
+
+        array.add("JAVA");
+        array.add("C++");
+        array.add("Python");
+        array.add("Rust");
+        array.add("Julia");
+        array.add("Golang");
+        array.add("PHP");
+        array.add("C#");
+        array.add("Assembly");
+
+        assertEquals(9, array.size());
+        assertEquals(16, array.capacity());
+
+        assertEquals("JAVA", array.remove(0));
+        assertEquals(8, array.size());
+        assertEquals(16, array.capacity());
+
+        assertEquals("Assembly", array.remove(7));
+        assertEquals(7, array.size());
+        assertEquals(16, array.capacity());
+
+        assertEquals("Python", array.remove(1));
+        assertEquals(6, array.size());
+        assertEquals(16, array.capacity());
+
+        assertEquals("Julia", array.remove(2));
+        assertEquals(5, array.size());
+        assertEquals(16, array.capacity());
+
+        assertEquals("Rust", array.remove(1));
+        assertEquals(4, array.size());
+        assertEquals(16, array.capacity());
+
+        assertEquals("PHP", array.remove(2));
+        assertEquals(3, array.size());
+        assertEquals(8, array.capacity());
     }
 
     @Test

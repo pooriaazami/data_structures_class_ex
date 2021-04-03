@@ -40,7 +40,7 @@ public class DynamicArray<E> implements List<E> {
 
     @Override
     public void insert(E data, int index) {
-        if (last_index+1 == capacity) {
+        if (last_index + 1 == capacity) {
             capacity *= GROW_RATE;
             reInitializeBuffer();
         }
@@ -54,7 +54,18 @@ public class DynamicArray<E> implements List<E> {
 
     @Override
     public E remove(int index) {
-        return null;
+        checkIndex(index);
+
+        E element = buffer[index];
+        System.arraycopy(buffer, index + 1, buffer, index, last_index - index + 1);
+
+        if (last_index + 1 == capacity * SHRINK_RATE * SHRINK_RATE) {
+            capacity *= SHRINK_RATE;
+            reInitializeBuffer();
+        }
+
+        last_index--;
+        return element;
     }
 
     @Override
