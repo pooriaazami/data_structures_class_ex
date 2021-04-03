@@ -3,6 +3,10 @@ package com.yazduni.Lists;
 public class DynamicStack<E> implements Stack<E> {
     private DynamicArray<E> array;
 
+    public DynamicStack() {
+        array = new DynamicArray<>();
+    }
+
     @Override
     public void push(E data) {
         array.add(data);
