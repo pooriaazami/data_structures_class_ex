@@ -70,6 +70,54 @@ class DynamicArrayTest {
 
     @Test
     void insert() {
+        assertEquals(8, array.capacity());
+        assertEquals(0, array.size());
+
+        array.add("JAVA");
+        assertEquals(8, array.capacity());
+        assertEquals(1, array.size());
+
+        array.insert("C++", 1);
+        assertEquals(8, array.capacity());
+        assertEquals(2, array.size());
+
+        array.insert("Python", 0);
+        assertEquals(8, array.capacity());
+        assertEquals(3, array.size());
+
+        array.insert("Rust", 1);
+        assertEquals(8, array.capacity());
+        assertEquals(4, array.size());
+
+        array.insert("Julia", 2);
+        assertEquals(8, array.capacity());
+        assertEquals(5, array.size());
+
+        array.insert("Golang", 1);
+        assertEquals(8, array.capacity());
+        assertEquals(6, array.size());
+
+        array.insert("PHP", 0);
+        assertEquals(8, array.capacity());
+        assertEquals(7, array.size());
+
+        array.insert("C#", 7);
+        assertEquals(8, array.capacity());
+        assertEquals(8, array.size());
+
+        array.insert("Assembly", 6);
+        assertEquals(16, array.capacity());
+        assertEquals(9, array.size());
+
+        assertEquals("PHP", array.get(0));
+        assertEquals("Python", array.get(1));
+        assertEquals("Golang", array.get(2));
+        assertEquals("Rust", array.get(3));
+        assertEquals("Julia", array.get(4));
+        assertEquals("JAVA", array.get(5));
+        assertEquals("Assembly", array.get(6));
+        assertEquals("C++", array.get(7));
+        assertEquals("C#", array.get(8));
     }
 
     @Test

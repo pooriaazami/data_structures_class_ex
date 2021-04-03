@@ -40,12 +40,15 @@ public class DynamicArray<E> implements List<E> {
 
     @Override
     public void insert(E data, int index) {
-        if (last_index + 1 == capacity) {
+        if (last_index+1 == capacity) {
             capacity *= GROW_RATE;
             reInitializeBuffer();
         }
 
-        System.arraycopy(buffer, index, buffer, index + 1, last_index - index + 1);
+        last_index++;
+        checkIndex(index);
+
+        System.arraycopy(buffer, index, buffer, index + 1, last_index - index);
         buffer[index] = data;
     }
 
