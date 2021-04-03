@@ -96,4 +96,9 @@ public class DynamicArray<E> implements List<E> {
         buffer[index] = data;
 
     }
+
+    @Override
+    public int find(E data) {
+        return 0;
+    }
 }

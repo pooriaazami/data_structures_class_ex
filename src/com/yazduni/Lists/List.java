@@ -18,4 +18,6 @@ public interface List<E> {
 
     void set(int index, E data);
 
+    int find(E data);
+
 }
