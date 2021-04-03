@@ -4,6 +4,16 @@ import com.yazduni.Lists.List;
 
 public class DynamicArray<E> implements List<E> {
 
+    private final int INITIAL_SIZE = 8;
+    private final double GROW_RATE = 1.5;
+    private final double SHRINK_RATE = 1 / GROW_RATE;
+
+    private E[] buffer;
+
+    public DynamicArray() {
+        buffer = (E[]) new Object[INITIAL_SIZE];
+    }
+
     private void shrink() {
     }
 
