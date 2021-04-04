@@ -46,7 +46,7 @@ public class StackLogger<E> {
         if (res.equals("ERROR\n"))
             outputFileWriter.append(res);
         else if (!command.equals("END"))
-            outputFileWriter.append(String.format("[log]: %s size = %d capacity = %d\n", res, stack.size(), stack.capacity()));
+            outputFileWriter.append(String.format("%s %d %d\n", res, stack.size(), stack.capacity()));
     }
 
     public void createNewTestcase() throws IOException {
