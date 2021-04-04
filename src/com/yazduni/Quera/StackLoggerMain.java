@@ -3,26 +3,39 @@ package com.yazduni.Quera;
 import com.yazduni.Quera.TestcaseGenerators.StackLogger;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public class StackLoggerMain {
     public static void main(String[] args) {
-        StackLogger<String> stackLogger = new StackLogger<>("./testcases");
+        Scanner input = new Scanner(System.in);
+        StackLogger<Integer> stackLogger = new StackLogger<>("./testcases");
 
-        try {
-            stackLogger.createNewTestcase();
+        int n = input.nextInt();
+        for (int i = 0; i < n; i++) {
+            String command = input.nextLine();
 
-            stackLogger.top();
-            stackLogger.pop();
-            stackLogger.push("JAVA");
-            stackLogger.pop();
-            stackLogger.push("C++");
-            stackLogger.push("Python");
-            stackLogger.top();
-            stackLogger.pop();
-            stackLogger.top();
-            stackLogger.end();
-        } catch (IOException e) {
-            e.printStackTrace();
+            try {
+                stackLogger.createNewTestcase();
+
+                if (command.contains(" ")) {
+                    String[] sep = command.split(" ");
+                    stackLogger.push(Integer.parseInt(sep[1]));
+                } else {
+                    switch (command) {
+                        case "TOP":
+                            stackLogger.top();
+                            break;
+                        case "POP":
+                            stackLogger.pop();
+                            break;
+                        case "END":
+                            stackLogger.end();
+                    }
+                }
+//
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
