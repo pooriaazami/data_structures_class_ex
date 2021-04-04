@@ -32,7 +32,7 @@ public class StackLogger<E> {
     }
 
     private void logToConsole(String res) {
-        if (res.equals("ERROR"))
+        if (res.equals("ERROR\n"))
             System.out.println("ERROR");
         else if (res.equals("END"))
             System.out.println("END");
