@@ -44,7 +44,14 @@ public class BSTCalc {
         if (node == null)
             return 0;
 
+        if (node.isLeaf())
+            return 1;
+
         return 1 + getHeight(node.getLeft()) + getHeight(node.getRight());
+    }
+
+    public int getHeight() {
+        return getHeight(this.root);
     }
 
 
