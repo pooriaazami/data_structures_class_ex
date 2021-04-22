@@ -1,11 +1,37 @@
 package com.yazduni.Trees;
 
+import com.yazduni.utils.Calculator;
+import com.yazduni.utils.Token;
+import com.yazduni.utils.Tokenizer;
+
+import java.util.ArrayList;
+import java.util.Stack;
+
 public class BSTCalc {
 
     private Node root;
 
     public BSTCalc() {
         this.root = null;
+    }
+
+    private Stack<Token> buildStack(String expression) {
+        ArrayList<Token> nodes = Tokenizer.tokenize(expression);
+        nodes = Calculator.translateToPostOrder(nodes);
+
+        Stack<Token> stack = new Stack<>();
+
+        for (Token t : nodes)
+            stack.add(t);
+
+        return stack;
+    }
+
+    public void buildFromExpression(String expression) {
+        Stack<Token> stack = buildStack(expression);
+
+
+
     }
 
     private int getHeight(Node node) {
@@ -17,13 +43,13 @@ public class BSTCalc {
 
 
     private static class Node {
-        private String _value;
+        private Token _value;
         private TYPE _type;
 
         private Node _left;
         private Node _right;
 
-        public Node(String value, TYPE type) {
+        public Node(Token value, TYPE type) {
             this._value = value;
             this._type = type;
         }
@@ -46,13 +72,6 @@ public class BSTCalc {
 
         public boolean isLeaf() {
             return this._left == null && this._right == null;
-        }
-
-        public double getNumericValue() {
-            if (this._type == TYPE.NUMBER)
-                return Double.parseDouble(this._value);
-
-            throw new ClassCastException();
         }
 
         public enum TYPE {
