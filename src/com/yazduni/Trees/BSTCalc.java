@@ -15,13 +15,29 @@ public class BSTCalc {
         this.root = null;
     }
 
+    public BSTCalc(String expression) {
+        buildFromExpression(expression);
+    }
+
     public void buildFromExpression(String expression) {
         ArrayList<Token> nodes = Tokenizer.tokenize(expression);
         nodes = Calculator.translateToPostOrder(nodes);
+        Stack<Node> stack = new Stack<>();
 
         for (Token token : nodes) {
+            if (token.isNumber()) {
+                Node node = new Node(token, Node.TYPE.NUMBER);
+                stack.push(node);
+            } else {
+                Node node1 = stack.pop();
+                Node node2 = stack.pop();
 
+                Node newNode = new Node(token, node1, node2, Node.TYPE.OPERATOR);
+                stack.push(newNode);
+            }
         }
+
+        this.root = stack.pop();
     }
 
     private int getHeight(Node node) {
@@ -41,6 +57,13 @@ public class BSTCalc {
 
         public Node(Token value, TYPE type) {
             this._value = value;
+            this._type = type;
+        }
+
+        public Node(Token value, Node left, Node right, TYPE type) {
+            this._value = value;
+            this._left = left;
+            this._right = right;
             this._type = type;
         }
 
