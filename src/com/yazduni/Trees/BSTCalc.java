@@ -47,11 +47,30 @@ public class BSTCalc {
         if (node.isLeaf())
             return 1;
 
-        return 1 + getHeight(node.getLeft()) + getHeight(node.getRight());
+        return 1 + Integer.max(getHeight(node.getLeft()), getHeight(node.getRight()));
     }
 
     public int getHeight() {
         return getHeight(this.root);
+    }
+
+    private void printTree(int tab, Node node) {
+        if (node == null)
+            return;
+
+        for (int i = 0; i < tab; i++)
+            System.out.print("\t");
+
+        System.out.println(node.getValue());
+
+        printTree(tab + 1, node.getLeft());
+
+        printTree(tab + 1, node.getRight());
+
+    }
+
+    public void printTree() {
+        printTree(0, root);
     }
 
 
@@ -92,6 +111,10 @@ public class BSTCalc {
 
         public boolean isLeaf() {
             return this._left == null && this._right == null;
+        }
+
+        public Token getValue() {
+            return this._value;
         }
 
         public enum TYPE {
