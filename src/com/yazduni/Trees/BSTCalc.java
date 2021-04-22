@@ -26,13 +26,13 @@ public class BSTCalc {
 
         for (Token token : nodes) {
             if (token.isNumber()) {
-                Node node = new Node(token, Node.TYPE.NUMBER);
+                Node node = new Node(token);
                 stack.push(node);
             } else {
                 Node node1 = stack.pop();
                 Node node2 = stack.pop();
 
-                Node newNode = new Node(token, node1, node2, Node.TYPE.OPERATOR);
+                Node newNode = new Node(token, node1, node2);
                 stack.push(newNode);
             }
         }
@@ -76,21 +76,18 @@ public class BSTCalc {
 
     private static class Node {
         private Token _value;
-        private TYPE _type;
 
         private Node _left;
         private Node _right;
 
-        public Node(Token value, TYPE type) {
+        public Node(Token value) {
             this._value = value;
-            this._type = type;
         }
 
-        public Node(Token value, Node left, Node right, TYPE type) {
+        public Node(Token value, Node left, Node right) {
             this._value = value;
             this._left = left;
             this._right = right;
-            this._type = type;
         }
 
         public Node getLeft() {
