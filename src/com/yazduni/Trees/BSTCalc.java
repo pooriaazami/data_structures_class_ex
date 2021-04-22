@@ -8,8 +8,11 @@ public class BSTCalc {
         this.root = null;
     }
 
-    public int getHeight() {
-        return -1;
+    private int getHeight(Node node) {
+        if (node == null)
+            return 0;
+
+        return 1 + getHeight(node.getLeft()) + getHeight(node.getRight());
     }
 
 
@@ -39,6 +42,10 @@ public class BSTCalc {
 
         public void setRight(Node node) {
             this._left = node;
+        }
+
+        public boolean isLeaf() {
+            return this._left == null && this._right == null;
         }
 
         public double getNumericValue() {
