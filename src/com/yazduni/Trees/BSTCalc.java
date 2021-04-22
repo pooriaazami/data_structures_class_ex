@@ -15,23 +15,13 @@ public class BSTCalc {
         this.root = null;
     }
 
-    private Stack<Token> buildStack(String expression) {
+    public void buildFromExpression(String expression) {
         ArrayList<Token> nodes = Tokenizer.tokenize(expression);
         nodes = Calculator.translateToPostOrder(nodes);
 
-        Stack<Token> stack = new Stack<>();
+        for (Token token : nodes) {
 
-        for (Token t : nodes)
-            stack.add(t);
-
-        return stack;
-    }
-
-    public void buildFromExpression(String expression) {
-        Stack<Token> stack = buildStack(expression);
-
-
-
+        }
     }
 
     private int getHeight(Node node) {

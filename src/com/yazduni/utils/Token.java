@@ -59,6 +59,10 @@ public class Token implements Comparable {
         return this.value.equals(")");
     }
 
+    public boolean isOperator() {
+        return !this.isNumber();
+    }
+
     public enum Priorities {
         FUNCTION(1), PRODUCT(2), SUM(3), NUMBER(4), PARENTHESES(5);
 
