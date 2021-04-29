@@ -205,17 +205,26 @@ class Tokenizer {
                 processBuffer(buffer, isBufferNumeric, ans);
                 buffer = "";
                 switch (expression.charAt(i)) {
-                    case '+' -> ans.add(new Token("+", Token.Priorities.SUM));
-                    case '-' -> {
+                    case '+':
+                        ans.add(new Token("+", Token.Priorities.SUM));
+                        break;
+                    case '-':
                         if (ans.size() == 0 || !ans.get(ans.size() - 1).isNumber()) {
                             isBufferNumeric = true;
                             buffer += "-";
                         } else
                             ans.add(new Token("-", Token.Priorities.SUM));
-                    }
-                    case '*' -> ans.add(new Token("*", Token.Priorities.PRODUCT));
-                    case '/', '\\' -> ans.add(new Token("\\", Token.Priorities.PRODUCT));
-                    case '^' -> ans.add(new Token("^", Token.Priorities.FUNCTION));
+                        break;
+                    case '*':
+                        ans.add(new Token("*", Token.Priorities.PRODUCT));
+                        break;
+                    case '/':
+                    case '\\':
+                        ans.add(new Token("\\", Token.Priorities.PRODUCT));
+                        break;
+                    case '^':
+                        ans.add(new Token("^", Token.Priorities.FUNCTION));
+                        break;
                 }
             } else if (isLetter(expression.charAt(i))) {
                 if (buffer.length() > 0 && isBufferNumeric)
