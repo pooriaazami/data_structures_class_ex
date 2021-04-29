@@ -298,7 +298,7 @@ class TypeMachine {
 
     public TypeMachine() {
         initialize();
-        initialize();
+//        initialize();
     }
 
     public void reset() {
@@ -338,8 +338,12 @@ class TypeMachine {
     public void processInput(String input) {
         iterator.moveToHead();
 
-        for (int i = 0; i < input.length(); i++)
+        for (int i = 0; i < input.length(); i++) {
+            System.out.println("----------------------------------------------------------------");
+            System.out.println("input:\t" + input.charAt(i));
             executeCommand(input.charAt(i));
+            System.out.println(this);
+        }
 
 
     }
@@ -353,6 +357,8 @@ class TypeMachine {
         String textStr = "";
         DoublyLinkedList.ItemIterator printIterator = text.getIterator(0);
         while (printIterator.hasNext()) {
+//            if(iterator == printIterator)
+//                System.out.print("|");
             printIterator.next();
             textStr += printIterator.getData();
         }
@@ -366,8 +372,8 @@ public class SubmitTest {
         Scanner input = new Scanner(System.in);
         TypeMachine typeMachine = new TypeMachine();
 
-        String inputData = input.next();
-        typeMachine.processInput(inputData);
+//        String inputData = input.nextLine();
+//        typeMachine.processInput("");
 
         System.out.println(typeMachine);
 
